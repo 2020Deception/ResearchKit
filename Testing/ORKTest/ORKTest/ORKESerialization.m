@@ -31,8 +31,10 @@
 
 
 #import "ORKESerialization.h"
-#import <ResearchKit/ResearchKit_Private.h>
-#import <MapKit/MapKit.h>
+
+@import ResearchKit.Private;
+
+@import MapKit;
 
 
 static NSString *ORKEStringFromDateISO8601(NSDate *date) {
@@ -1007,6 +1009,7 @@ encondingTable =
         nil,
         (@{
            PROPERTY(timestamp, NSNumber, NSObject, NO, nil, nil),
+           PROPERTY(duration, NSNumber, NSObject, NO, nil, nil),
            PROPERTY(buttonIdentifier, NSNumber, NSObject, NO,
                     ^id(id numeric) { return tableMapForward(((NSNumber *)numeric).integerValue, buttonIdentifierTable()); },
                     ^id(id string) { return @(tableMapReverse(string, buttonIdentifierTable())); }),
@@ -1153,6 +1156,7 @@ encondingTable =
          nil,
          (@{
             PROPERTY(passcodeSaved, NSNumber, NSObject, YES, nil, nil),
+            PROPERTY(touchIdEnabled, NSNumber, NSObject, YES, nil, nil)
             })),
     ENTRY(ORKQuestionResult,
          nil,
